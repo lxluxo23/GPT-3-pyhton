@@ -1,4 +1,3 @@
-
 import openai
 import subprocess
 from colorama import Fore, Style
@@ -25,11 +24,11 @@ def askquestion(question, engine):
 load_dotenv()
 if __name__ == "__main__":
     key = os.getenv("TOKEN")
-    print(Fore.GREEN + 'Grupo firma \n' + Style.RESET_ALL)
+    print(Fore.GREEN + 'Busco pega \n' + Style.RESET_ALL)
 
     if not key:
         print(
-            '\nSe necesita una API key, la puedes obtener desde aca '
+            '\nSe necesita una API key, la puedes obtener desde aquí '
             + Fore.BLUE + 'https://beta.openai.com/account/api-keys' + Style.RESET_ALL)
         key = pwinput.pwinput(prompt='\nLa API key: ', mask='*')
     openai.api_key = key
@@ -37,16 +36,16 @@ if __name__ == "__main__":
     while True:
         print(
             Fore.BLUE +
-            'Opciones: \n\t1: Abrir visual (para preguntas de mas de una linea) \n\t2: Pregnta alguna wea'
+            'Opciones: \n\t1: Abrir visual (para preguntas de más de una línea) \n\t2: Pregunta alguna cosa'
             + Style.RESET_ALL)
 
-        option = int(input('Elige opcion: '))
+        option = int(input('Elige opción: '))
 
         question = None
         if option == 1:
-            print(Fore.RED + 'Aun estoy en eso' + Style.RESET_ALL)
+            print(Fore.RED + 'Aún estoy en eso' + Style.RESET_ALL)
             try:
-                print(Fore.GREEN + 'abriendo Visual Studio Sode' + Style.RESET_ALL)
+                print(Fore.GREEN + 'Abriendo Visual Studio Code' + Style.RESET_ALL)
                 subprocess.run(["code", "-w", "lineas.txt"], check=True)
             except:
                 print(
@@ -60,7 +59,7 @@ if __name__ == "__main__":
         elif option == 2:
             question = input('Pregunta algo: ')
         else:
-            print(Fore.RED + 'Aun estoy en eso' + Style.RESET_ALL)
+            print(Fore.RED + 'Aún estoy en eso' + Style.RESET_ALL)
 
         if question:
             askquestion(question, model_engine)
