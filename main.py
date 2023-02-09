@@ -24,7 +24,7 @@ def askquestion(question, engine):
 load_dotenv()
 if __name__ == "__main__":
     key = os.getenv("TOKEN")
-    print(Fore.GREEN + 'Busco pega \n' + Style.RESET_ALL)
+    # print(Fore.GREEN + 'Busco pega \n' + Style.RESET_ALL)
 
     if not key:
         print(
