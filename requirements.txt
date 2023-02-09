@@ -1,0 +1,4 @@
+subprocess
+colorama
+pwinput
+openai
