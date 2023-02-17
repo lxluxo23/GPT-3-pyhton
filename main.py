@@ -68,6 +68,8 @@ if __name__ == "__main__":
                 print(Fore.BLUE + 'Pregunta: ' + Style.RESET_ALL +
                       Fore.GREEN + str(contents))
                 question = contents
+            if platform.system() == 'Darwin':
+                print(Fore.GREEN + 'No tenia un mac para pruebas \n' + Style.RESET_ALL)
         elif option == 2:
             question = input('Pregunta algo: ')
         else:
