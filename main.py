@@ -62,7 +62,7 @@ if __name__ == "__main__":
                       Fore.GREEN + str(contents))
                 question = contents
             if platform.system() == 'Linux':
-                subprocess.run("nano", "lineas.txt")
+                subprocess.run(["nano", "lineas.txt"])
                 with open("./lineas.txt", "r") as c:
                     contents = c.read()
                 print(Fore.BLUE + 'Pregunta: ' + Style.RESET_ALL +
