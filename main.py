@@ -4,6 +4,7 @@ from colorama import Fore, Style
 import pwinput
 import os
 from dotenv import load_dotenv
+import platform
 
 
 def askquestion(question, engine):
@@ -24,6 +25,8 @@ def askquestion(question, engine):
 load_dotenv()
 if __name__ == "__main__":
     key = os.getenv("TOKEN")
+
+    # print(platform.system())
     # print(Fore.GREEN + 'Busco pega \n' + Style.RESET_ALL)
 
     if not key:
@@ -43,19 +46,28 @@ if __name__ == "__main__":
 
         question = None
         if option == 1:
-            print(Fore.RED + 'Aún estoy en eso' + Style.RESET_ALL)
-            try:
-                print(Fore.GREEN + 'Abriendo Visual Studio Code' + Style.RESET_ALL)
-                subprocess.run(["code", "-w", "lineas.txt"], check=True)
-            except:
-                print(
-                    Fore.RED + 'PROBLEMA ABRIENDO VISUAL CODE ... ABRIENDO NOTEPAD.EXE'+Style.RESET_ALL)
-                subprocess.run(["notepad.exe", "lineas.txt"], check=True)
-            with open("./lineas.txt", "r") as c:
-                contents = c.read()
-            print(Fore.BLUE + 'Pregunta: ' + Style.RESET_ALL +
-                  Fore.GREEN + str(contents))
-            question = contents
+            if platform.system() == 'Windows':
+                print(Fore.RED + 'Aún estoy en eso' + Style.RESET_ALL)
+                try:
+                    print(Fore.GREEN + 'Abriendo Visual Studio Code' +
+                          Style.RESET_ALL)
+                    subprocess.run(["code", "-w", "lineas.txt"], check=True)
+                except:
+                    print(
+                        Fore.RED + 'PROBLEMA ABRIENDO VISUAL CODE ... ABRIENDO NOTEPAD.EXE'+Style.RESET_ALL)
+                    subprocess.run(["notepad.exe", "lineas.txt"], check=True)
+                with open("./lineas.txt", "r") as c:
+                    contents = c.read()
+                print(Fore.BLUE + 'Pregunta: ' + Style.RESET_ALL +
+                      Fore.GREEN + str(contents))
+                question = contents
+            if platform.system() == 'Linux':
+                subprocess.run("nano", "lineas.txt")
+                with open("./lineas.txt", "r") as c:
+                    contents = c.read()
+                print(Fore.BLUE + 'Pregunta: ' + Style.RESET_ALL +
+                      Fore.GREEN + str(contents))
+                question = contents
         elif option == 2:
             question = input('Pregunta algo: ')
         else:
